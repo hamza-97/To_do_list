@@ -1,0 +1,52 @@
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div style="background-color: lightyellow; height: 160px; border: 2px solid black">
+<h1 style="text-align: center; padding-top: 50px; font-style: italic;">My todo list</h1>
+</div>
+
+<div style="padding-right:10px; margin-top:20px;">
+
+<%= form_for @post, url: {action: 'create'} do |f| %>
+  	<%= f.label :task_name, "Write the name of the task you want to create:", style:'margin-left:1em;border-top:0px;border-right:0px;border-left:0px;font-style'  %>
+    <%= f.text_field :task_name,style:'margin-left:1em;border:2px solid black' %><br>
+    <%= f.submit "Create", class:'btn btn-primary',style:'margin-left:30%' %>
+<%end%>
+
+</div>
+
+
+<!-- <div style="margin-left: auto; margin-right: auto"> -->
+<div>
+<table style="border: 2px solid black; padding:2px;text-align: center;margin-left: auto; margin-right: auto; margin-top: 10px">
+    	<tr>
+    		<td><b>Serial#</b></td>
+    		<td><b>Name of the Task</b></td>
+    		<td><b>Status</b></td>
+    		<td><b>Completed</b></td>
+    		<td><b>Delete</b></td>
+    		<!-- <td</b></td> -->
+    	</tr>
+
+		<% @posts.each do |a| %>
+    	<tr>
+    	<td><%=a.id%></td>
+    	<td><%= a.task_name%> 
+		<a href="<%= edit_page_path(id: a.id)%>"<button style="font-size:14px"><i class="fa fa-edit"></i></button>
+
+</a></td>
+    	<td><%=a.complete%></td>
+    	
+    	<!-- <td><button>Completed</button></td> -->
+    	  <td><%= link_to 'Update', changer_page_path(id: a.id, flags: "true"), method: 'post' %></td>
+    	 	<td>
+    	 		<%= link_to "Delete", page_path(id: a.id), :method => :delete %>
+    	 	</td>
+
+    	</tr>
+<%end%>    
+    </table>
+</div>
+    <p>Note: After completion of task just press the button</p>
+
+

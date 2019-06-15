@@ -1,0 +1,9 @@
+<div style="background-color: lightyellow; height: 160px; border: 2px solid black">
+<h1 style="text-align: center; padding-top: 50px; font-style: italic;">My todo list</h1>
+</div>
+<h2>Edit the task</h2>
+<%= form_for @post, url: {action: 'update'} do |f| %>
+  	<%= f.label :task_name, "Edit your task:", style:'margin-left:1em;border-top:0px;border-right:0px;border-left:0px;font-style'  %>
+    <%= f.text_field :task_name,style:'margin-left:1em;border:2px solid black' %><br>
+    <%= f.submit "Update", class:'btn btn-primary',style:'margin-left:15%' %>
+<%end%>
